@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아이디 페이지</title>
+  <link rel="stylesheet" href="./css/find-id.css">
+
+</head>
+<body>
+  <div class="login-main">
+    <!-- 로고 누르면 메인으로 이동 -->
+    <div class="logo-box">
+      <a href="http://127.0.0.1:5500/powpow-login/main.html">
+        <img id="logo" src="./images/logo.png" alt="로고" />
+      </a>
+    </div>
+    <div class="box2">
+      <div class="box1">
+        <div class="button">
+          <button class="button1">아이디 찾기</button>
+          <button class="button2">비밀번호 찾기</button>
+        </div>
+        <div class="input">
+          <div>
+            <p>이름</p>
+            <input class="inputbutton" type="text" name="id" placeholder="이름">
+          </div>
+          <div>
+            <p>휴대폰 번호</p>
+            <div class="input-container">
+              <input class="inputbutton" type="number" name="phone" placeholder="휴대폰 번호 입력 ('-'제외 11자리 입력)">
+              <button class="auth-button">인증</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="next-button">다음</button>
+    </div>
+
+  </div>
+</body>
+</html>
