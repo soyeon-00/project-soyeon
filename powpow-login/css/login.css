@@ -18,12 +18,9 @@ input,select{vertical-align:middle}
 
 body {
   font-family: 'Spoqa Han Sans Neo', sans-serif !important;
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
-
-
+/* 로고 */
 #logo{
   width: 236px;
   height: 60px;
@@ -38,7 +35,8 @@ body {
   padding-bottom: 40px;
 }
 
-.button1 {
+/* 구매자 버튼 */
+.member-btn {
   width: 220px;
   height: 44px;
   border-radius: 20px;
@@ -50,13 +48,13 @@ body {
   background-color:#ffffff;
   cursor: pointer;
 }
-.button1:focus {
+.member-btn:focus {
   background-color:#828282;
   color: #ffffff;
 }
 
-
-.button2 {
+/* 판매자 버튼 */
+.seller-btn {
   width: 220px;
   height: 44px;
   border-radius: 20px;
@@ -67,17 +65,19 @@ body {
   background-color:#ffffff;
   cursor: pointer;
 }
-.button2:focus {
+.seller-btn:focus {
   background-color:#828282;
   color: #ffffff;
 }
 
-.button {
+.tap {
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
 }
 
 
+/* 구매자/판매자 박스 */
 .inputbutton1 {
   background-color: #ffffff;
   width: 464px;
@@ -138,6 +138,7 @@ body {
   border-radius: 20px;
   box-sizing: border-box;
   cursor: pointer;
+  margin-top: 25px;
 }
 
 .box2{
@@ -179,9 +180,11 @@ body {
   padding-top: 20px;
 }
 
+/* 구매자 자동 로그인 체크 박스 */
 #saveEmail {
   display: none; /* 기본 체크박스 숨김 */
 }
+
 
 .checkmark {
   display: block;
@@ -201,6 +204,41 @@ body {
 }
 
 #saveEmail:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  width: 10px; /* 체크 표시 크기 */
+  height: 10px; /* 체크 표시 크기 */
+  background-color: white; /* 체크 표시 색상 */
+  border-radius: 50%; /* 동그라미 형태 */
+  top: 5px; /* 위치 조정 */
+  left: 5px; /* 위치 조정 */
+  display: block; /* 표시 활성화 */
+}
+
+
+/* 판매자 자동 로그인 체크 박스 */
+#saveEmail2 {
+  display: none; /* 기본 체크박스 숨김 */
+}
+
+.checkmark2 {
+  display: block;
+  height: 20px;
+  width: 20px; 
+  border-radius: 50%;
+  margin-right: 10px; 
+  position: relative; /* 자식 요소의 위치를 상대적으로 설정 */
+  background-color: #D9D9D9; /* 기본 배경색 */
+  box-sizing: border-box;
+  transition: background-color 0.3s; /* 색상 전환 효과 */
+  cursor: pointer;
+}
+
+#saveEmail2:checked + .checkmark2{
+  background-color: #828282; /* 체크된 상태의 배경 색상 */
+}
+
+#saveEmail2:checked + .checkmark2::after {
   content: '';
   position: absolute;
   width: 10px; /* 체크 표시 크기 */
@@ -254,8 +292,23 @@ body {
   width: 464px;
   padding-top: 20px;
   gap: 12px;
+  margin-bottom: 113px;
 }
 
+
+
+/* 구매자 판매자 크기 고정 */
+.main-content  {
+  width: 464px;
+  height: 550px;
+}
+
+
+
+
+
+
+/* 하단 글 */
 .bottom-text {
   font-size: 11px;
   color: #828282;
@@ -270,9 +323,11 @@ body {
 .bottom-box{
   display: flex;
   flex-direction: row;
-  padding-top: 113px;
+  align-items: center;
+  justify-content: center;
 }
 
+/* 로그인 메인 틀 */
 .login-main {
   width: 464px;
   display: flex;
@@ -282,5 +337,3 @@ body {
   box-sizing: border-box;
   margin: 50px auto;
 }
-
-

@@ -97,7 +97,7 @@
 
         <div class="agreeAll">
           <label>
-            <input type="checkbox" name="all-agree" id="all-agree" />
+            <input type="checkbox" name="allagree" class="allagree" />
             <span class="checkmark"></span>
           </label>
           <p class="text2">모두 동의합니다.</p>
@@ -107,7 +107,7 @@
 
         <div class="agree">
           <label>
-            <input type="checkbox" name="agree" id="agree1" />
+            <input type="checkbox" name="agree1" class="agree1" />
             <span class="checkmark"></span>
           </label>
           <div class="text-box2">
@@ -119,7 +119,7 @@
         
         <div class="agree">
           <label>
-            <input type="checkbox" name="agree" id="agree1" />
+            <input type="checkbox" name="agree2" class="agree1" />
             <span class="checkmark"></span>
           </label>
           <div class="text-box2">
@@ -131,7 +131,7 @@
         
         <div class="agree">
           <label>
-            <input type="checkbox" name="agree" id="agree1" />
+            <input type="checkbox" name="agree3" class="agree1" />
             <span class="checkmark"></span>
           </label>
           <div class="text-box2">
@@ -141,9 +141,9 @@
         </div>
 
         
-        <div class="agree1">
+        <div class="agree2">
           <label>
-            <input type="checkbox" name="agree" id="agree1" />
+            <input type="checkbox" name="agree4" class="agree1" />
             <span class="checkmark"></span>
           </label>
           <div class="text-box2">
@@ -167,5 +167,24 @@
     $input.attr("type",check ? "text" : "password");
    $(e.target).css("background-image", `url(${check ? "./images/eye-on.svg" : "./images/eye-off.svg"})`)
   })
+
+    // 전체동의 로직 만들기
+    NodeList.prototype.map = Array.prototype.map;
+
+    const allagree = document.querySelector(".allagree")
+    const agree1s = document.querySelectorAll(".agree1")
+
+
+    $(".allagree").on("click", (e) => {
+      $(".agree1").prop("checked", e.target.checked);
+    })
+
+    $(".agree1").on("click", (e) => {
+      $(".allagree").prop("checked", $(".agree1").filter(":checked").length === 4);
+    })
+
+</script>
+
+
 </script>
 </html>

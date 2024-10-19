@@ -1,93 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>로그인페이지</title>
+  <title>Document</title>
   <link rel="stylesheet" href="./css/login.css">
 </head>
-
 <body>
-  <div class="login-main">
-    <!-- 로고 누르면 메인으로 이동 -->
-    <div class="logo-box">
-      <a href="http://127.0.0.1:5500/powpow-login/main.html">
-        <img id="logo" src="./images/logo.png" alt="로고" />
-      </a>
-    </div>
-    <div class="box2">
-      <div class="box1">
-        <div class="button">
-          <button class="button1" onclick="showIdFind()">회원</button>
-          <button class="button2" onclick="showPasswordFind()">판매자</button>
+  <form>
+    <div class="login-main">
+      <div class="logo-box">
+        <a href="http://127.0.0.1:5500/powpow-login/main.html">
+          <img id="logo" src="./images/logo.png" alt="로고" />
+        </a>
+      </div>
+      <div>
+        <div class="tap">
+          <button class="member-btn">회원</button>
+          <button class="seller-btn">판매자</button>
         </div>
-        <!-- 회원 로그인 -->
-        <div id="idFind" class="input">
-          <input class="inputbutton1" type="email" name="id" placeholder="회원 아이디(이메일)를 입력해주세요">
-          <input class="inputbutton" type="password" name="password" placeholder="회원 비밀번호를 입력해주세요">
+        <div class="main">
+          <div class="main-content mebmer">
+            <div id="idFind" class="input">
+              <input class="inputbutton1" type="email" name="id" placeholder="회원 아이디(이메일)를 입력해주세요">
+              <p id="id-result"></p>
+              <input class="inputbutton" type="password" name="password" placeholder="회원 비밀번호를 입력해주세요">
+              <p id="password-result"></p>
+
+            <button class="login-button">로그인</button>
+          </div>
+          <div class="box4">
+            <div class="box3">
+              <div class="savebox">
+                <label for="saveEmail">
+                  <input type="checkbox" name="saveEmail" id="saveEmail" />
+                  <span class="checkmark"></span>
+                </label>
+                <p class="id-save">아이디 저장</p>
+              </div>
+              <a class="forgot" href="http://127.0.0.1:5500/powpow-login/find.html">아이디 혹은 비밀번호를 잊어버리셨나요?</a>
+            </div>
+          </div>
+          <div class="text-box">
+            <p class="text">계정이 없으신가요?</p>
+            <p class="text1">|</p>
+            <a class="text" href="http://127.0.0.1:5500/powpow-login/join.html">회원가입</a>
+          </div>
+          <p class="text2">Or continue with</p>
+          <div class="simple-login-box">
+            <img class="simple-login" src="./images/kakao.svg" alt="카카오">
+            <img class="simple-login" src="./images/naver.svg" alt="네이버">
+            <img class="simple-login" src="./images/google.svg" alt="구글">
+          </div>
+        </div>
+          <div class="main-content seller" style="display: none;">
+            <div id="idFind" class="input">
+              <input class="inputbutton1" type="id" name="id" placeholder="판매자 아이디(이메일)를 입력해주세요">
+              <input class="inputbutton" type="password" name="password" placeholder="판매자 비밀번호를 입력해주세요">
+    
+            <button type="button" class="login-button">로그인</button>
+          </div>
+          <div class="box4">
+            <div class="box3">
+              <div class="savebox">
+                <label for="saveEmail2">
+                  <input type="checkbox" name="saveEmail" id="saveEmail2" />
+                  <span class="checkmark2"></span>
+                </label>
+                <p class="id-save">아이디 저장</p>
+              </div>
+              <a class="forgot" href="http://127.0.0.1:5500/powpow-login/find.html">아이디 혹은 비밀번호를 잊어버리셨나요?</a>
+            </div>
+          </div>
+          <div class="text-box">
+            <p class="text">계정이 없으신가요?</p>
+            <p class="text1">|</p>
+            <a class="text" href="http://127.0.0.1:5500/powpow-login/join.html">회원가입</a>
+          </div>
+          </div>
+          </div>
+          <div class="bottom-box">
+            <p class="bottom-text">이용약관</p>
+            <p class="bottom-text1">|</p>
+            <p class="bottom-text">개인정보처리방침</p>
+            <p class="bottom-text1">|</p>
+            <p class="bottom-text">책임의 한계와 법적고지</p>
+            <p class="bottom-text1">|</p>
+            <p class="bottom-text">회원정보 고객센터</p>
+          </div>
         </div>
       </div>
-    <!-- 판매자 로그인 -->
-    <div id="passwordFind" class="input" style="display: none;">
-      <input class="inputbutton1" type="email" name="id" placeholder="판매자 아이디(이메일)를 입력해주세요">
-      <input class="inputbutton" type="password" name="password" placeholder="판매자 비밀번호를 입력해주세요">
-    </div>
-      <button class="login-button">로그인</button>
-    </div>
-    <div class="box4">
-      <div class="box3">
-        <div class="savebox">
-          <label for="saveEmail">
-            <input type="checkbox" name="saveEmail" id="saveEmail" />
-            <span class="checkmark"></span>
-          </label>
-          <p class="id-save">아이디 저장</p>
-        </div>
-        <a class="forgot" href="http://127.0.0.1:5500/powpow-login/find.html">아이디 혹은 비밀번호를 잊어버리셨나요?</a>
-      </div>
-    </div>
-    <div class="text-box">
-      <p class="text">계정이 없으신가요?</p>
-      <p class="text1">|</p>
-      <a class="text" href="http://127.0.0.1:5500/powpow-login/join.html">회원가입</a>
-    </div>
-    <p class="text2">Or continue with</p>
-    <div class="simple-login-box">
-      <img class="simple-login" src="./images/kakao.svg" alt="카카오">
-      <img class="simple-login" src="./images/naver.svg" alt="네이버">
-      <img class="simple-login" src="./images/google.svg" alt="구글">
-    </div>
-    <div class="bottom-box">
-      <p class="bottom-text">이용약관</p>
-      <p class="bottom-text1">|</p>
-      <p class="bottom-text">개인정보처리방침</p>
-      <p class="bottom-text1">|</p>
-      <p class="bottom-text">책임의 한계와 법적고지</p>
-      <p class="bottom-text1">|</p>
-      <p class="bottom-text">회원정보 고객센터</p>
-    </div>
-  </div>
-
-  <script>
-    function showIdFind() {
-        document.getElementById('idFind').style.display = 'block';
-        document.getElementById('passwordFind').style.display = 'none';
-        document.querySelector('.text2').style.display = 'block';
-        document.querySelector('.simple-login-box').style.display = 'flex';
-        document.querySelector('.button1').focus(); // '회원' 버튼에 포커스 유지
-    }
-
-    function showPasswordFind() {
-        document.getElementById('idFind').style.display = 'none';
-        document.getElementById('passwordFind').style.display = 'block';
-        document.querySelector('.text2').style.display = 'none';
-        document.querySelector('.simple-login-box').style.display = 'none';
-        document.querySelector('.button2').focus(); // '판매자' 버튼에 포커스 유지
-    }
-</script>
-
+  </form>
 </body>
 
+<script>
+  const mebmerBtn = document.querySelector(".member-btn");
+  const sellerBtn = document.querySelector(".seller-btn");
+  const main = document.querySelectorAll(".main-content");
 
+  mebmerBtn.addEventListener("click", () => {
+    main[0].style.display = "block";
+    main[1].style.display = "none";
+  })
+
+  sellerBtn.addEventListener("click", () => {
+    main[0].style.display = "none";
+    main[1].style.display = "block";
+  })
+
+  // function showIdFind() {
+  //       document.getElementById('idFind').style.display = 'block';
+  //       document.getElementById('passwordFind').style.display = 'none';
+  //       document.querySelector('.text2').style.display = 'block';
+  //       document.querySelector('.simple-login-box').style.display = 'flex';
+  //       document.querySelector('.button1').focus(); // '회원' 버튼에 포커스 유지
+  //   }
+
+  //   function showPasswordFind() {
+  //       document.getElementById('idFind').style.display = 'none';
+  //       document.getElementById('passwordFind').style.display = 'block';
+  //       document.querySelector('.text2').style.display = 'none';
+  //       document.querySelector('.simple-login-box').style.display = 'none';
+  //       document.querySelector('.button2').focus(); // '판매자' 버튼에 포커스 유지
+  //   }
+
+
+  // 버튼, 아이디 입력 필드, 비밀번호 입력 필드, 폼 요소 선택
+const button = document.querySelector("button[type=button]");
+const id = document.querySelector("input[name=id]");
+const password = document.querySelector("input[name=password]");
+const form = document.querySelector("form");
+
+// 경고 메시지를 표시할 요소 생성
+const warningMessage = document.createElement("div");
+warningMessage.style.color = "red"; // 경고 메시지 색상
+warningMessage.style.display = "none"; // 초기에는 숨김
+button.parentNode.insertBefore(warningMessage, button); // 버튼 위에 추가
+
+// 입력 검증 플래그 초기화
+globalThis.flag = new Array(false, false);
+
+// 버튼 클릭 시 이벤트
+button.addEventListener("click", () => {
+    // 경고 메시지 초기화
+    warningMessage.style.display = "none"; 
+    warningMessage.innerText = ""; // 이전 메시지 내용 제거
+
+    // 아이디와 비밀번호 입력 확인
+    if (!id.value || !password.value) {
+        warningMessage.innerText = "아이디 또는 비밀번호를 확인해주세요."; // 경고 메시지 설정
+        warningMessage.style.display = "block"; // 메시지 표시
+        return; // 함수 종료
+    }
+
+    // 모든 입력이 검증되면 플래그 설정
+    globalThis.flag[0] = true;
+    globalThis.flag[1] = true;
+
+    form.submit(); // 폼 전송
+});
+</script>
 </html>

@@ -3,49 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>비밀번호 폼 변경 (보였다 사라졌다하는고)</title>
+  <title>Document</title>
   <style>
-    input {
-      outline: none;
-      border: none;
+    .main-content {
+      width: 800px;
+      height: 600px;
+      
     }
-    .password {
-      border:solid 1px #333;
-      width: 200px;
-      display: flex;
+
+    .mebmer {
+      background-color: rebeccapurple;
     }
-    .password input {
-      width: 100%;
-    }
-    .mark {
-      width:22px;
-      height: 22px;
-      flex-shrink: 0;
-      background-image: url(./images/eye-off.svg);
-    
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      cursor: pointer;
+
+    .seller {
+      background-color: brown;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <form>
-    <div class="password">
-      <input name="password" type="password">
-      <div class="mark"></div>
+  
+  <div>
+    <div class="tap">
+      <button class="member-btn" onclick="showIdFind()">회원</button>
+      <button class="seller-btn" onclick="showPasswordFind()">판매자</button>
     </div>
-    <button type="button">전송</button>
-  </form>
+    <div class="main">
+      <div class="main-content mebmer"></div>
+      <div class="main-content seller"></div>
+    </div>
+    <div class="company">
+      회원 | 판매자 | 구매자 | 회사정보
+    </div>
+  </div>
 </body>
-<script src="/jQuery.js"></script>
 <script>
-  const $input = $("input[name='password']");
-  $("div.mark").on("click", (e) => {
-    const check = $input.attr("type") === "password";
-    $input.attr("type",check ? "text" : "password");
-   $(e.target).css("background-image", `url(${check ? "./images/eye-on.svg" : "./images/eye-off.svg"})`)
+  const mebmerBtn = document.querySelector(".member-btn");
+  const sellerBtn = document.querySelector(".seller-btn");
+  const main = document.querySelectorAll(".main-content");
+
+  mebmerBtn.addEventListener("click", () => {
+    main[0].style.display = "block";
+    main[1].style.display = "none";
   })
+
+  sellerBtn.addEventListener("click", () => {
+    main[0].style.display = "none";
+    main[1].style.display = "block";
+  })
+
+  function showIdFind() {
+        document.getElementById('idFind').style.display = 'block';
+        document.getElementById('passwordFind').style.display = 'none';
+        document.querySelector('.text2').style.display = 'block';
+        document.querySelector('.simple-login-box').style.display = 'flex';
+        document.querySelector('.button1').focus(); // '회원' 버튼에 포커스 유지
+    }
+
+    function showPasswordFind() {
+        document.getElementById('idFind').style.display = 'none';
+        document.getElementById('passwordFind').style.display = 'block';
+        document.querySelector('.text2').style.display = 'none';
+        document.querySelector('.simple-login-box').style.display = 'none';
+        document.querySelector('.button2').focus(); // '판매자' 버튼에 포커스 유지
+    }
+
 </script>
 </html>
