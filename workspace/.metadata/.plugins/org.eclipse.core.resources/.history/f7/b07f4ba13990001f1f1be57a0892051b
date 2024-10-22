@@ -1,0 +1,69 @@
+const idBtn = document.querySelector(".id-btn");
+const passwordBtn = document.querySelector(".password-btn");
+const main = document.querySelectorAll(".main-content");
+
+idBtn.addEventListener("click", () => {
+  main[0].style.display = "block";
+  main[1].style.display = "none";
+  idBtn.classList.add('active'); // 활성화된 버튼 스타일 적용
+  passwordBtn.classList.remove('active'); // 비밀번호 버튼 비활성화
+  main[0].querySelector(".inputbutton").focus(); // 첫 번째 입력창에 포커스
+});
+
+passwordBtn.addEventListener("click", () => {
+  main[0].style.display = "none";
+  main[1].style.display = "block";
+  passwordBtn.classList.add('active'); // 활성화된 버튼 스타일 적용
+  idBtn.classList.remove('active'); // 아이디 버튼 비활성화
+  main[1].querySelector(".inputbutton").focus(); // 두 번째 입력창에 포커스
+});
+
+
+
+// 버튼 클릭 시 페이지 전환
+document.querySelector('.next-button1').addEventListener('click', () => {
+  const selectedUser = document.querySelector('input[name="user"]:checked'); // 선택된 라디오 버튼 찾기
+  
+  if (selectedUser) {
+    // 선택된 값에 따라 페이지 이동
+    if (selectedUser.value === 'A') {
+      window.location.href = 'http://localhost:9000/powpow/login/buyer-join.jsp'; // POWPOW 회원 페이지
+    } else if (selectedUser.value === 'B') {
+      window.location.href = 'http://localhost:9000/powpow/login/seller-join.jsp'; // POWPOW 판매자 페이지
+    }
+  } else {
+    alert('비밀번호를 찾을 방법을 선택해 주세요!'); // 아무 것도 선택하지 않았을 경우 경고
+  }
+});
+
+
+/*인증번호 입력 요청*/
+document.addEventListener("DOMContentLoaded", () => {
+  const authButton = document.querySelector(".auth-button"); // 인증 요청 버튼
+  const authNumberContainer = document.getElementById("authNumberContainer"); // 인증번호 입력란
+  const confirmButton = document.querySelector(".auth-button + button"); // 확인 버튼
+  const authNumberInput = document.querySelector("input[name='authNumber']"); // 인증번호 입력란
+  const passwordResult = document.getElementById("password-result"); // 안내 문구
+
+  // 인증 요청 버튼 클릭 시 인증번호 입력란 보여주기
+  authButton.addEventListener("click", () => {
+    authNumberContainer.style.display = "block"; // 인증번호 입력란 표시
+    passwordResult.innerText = ""; // 안내 문구 초기화
+  });
+
+  // 확인 버튼 클릭 시 유효성 검사
+  confirmButton.addEventListener("click", (event) => {
+    event.preventDefault(); // 기본 행동 방지
+
+    if (!authNumberInput.value) {
+      passwordResult.innerText = "인증번호를 입력하세요."; // 안내 문구
+      passwordResult.style.color = "red"; // 글자색 빨간색
+    } else if (authNumberInput.value.length !== 6) {
+      passwordResult.innerText = "인증번호가 올바르지 않습니다."; // 잘못된 인증번호 안내
+      passwordResult.style.color = "red"; // 글자색 빨간색
+    } else {
+      // 인증번호가 올바르면 다음 페이지로 이동하는 코드를 추가하세요.
+      // 예: window.location.href = "http://localhost:9000/powpow/seller-id-find-complete.jsp";
+    }
+  });
+});

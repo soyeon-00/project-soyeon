@@ -1,0 +1,81 @@
+  
+/*회원 판패자 페이지 구분*/
+  const mebmerBtn = document.querySelector(".member-btn");
+  const sellerBtn = document.querySelector(".seller-btn");
+  const main = document.querySelectorAll(".main-content");
+
+  mebmerBtn.addEventListener("click", () => {
+    main[0].style.display = "block";
+    main[1].style.display = "none";
+  })
+
+  sellerBtn.addEventListener("click", () => {
+    main[0].style.display = "none";
+    main[1].style.display = "block";
+  })
+  
+  
+  // 유효성 검사하기
+   // addEventListener
+   // 아이디와 비밀번호의 빈 값을 검사해서 모두 입력했을 때 검증 완료를 alert()으로 띄우기!
+   document.addEventListener("DOMContentLoaded", () => {
+       const button = document.querySelector("button[type=button]");
+       const id = document.querySelector("input[name=id]");
+       const password = document.querySelector("input[name=password]");
+       const idResult = document.querySelector("#id-result");
+       const passwordResult = document.querySelector("#password-result");
+       const form = document.querySelector("form");
+
+       globalThis.flag = [false, false]; // Initialize flags
+
+       id.addEventListener("focus", (e) => {
+           id.style.border = ""; // Reset border on focus
+           idResult.innerText = ""; // Clear message
+       });
+
+       id.addEventListener("blur", (e) => {
+           if (!e.target.value) {
+               id.style.border = "solid 2px red";
+               idResult.innerText = "아이디를 입력하세요.";
+               idResult.style.color = "red";
+               globalThis.flag[0] = false;
+               return;
+           }
+           globalThis.flag[0] = true;
+       });
+
+       password.addEventListener("focus", (e) => {
+           password.style.border = ""; // Reset border on focus
+           passwordResult.innerText = ""; // Clear message
+       });
+
+       password.addEventListener("blur", (e) => {
+           if (!e.target.value) {
+               password.style.border = "solid 2px red";
+               passwordResult.innerText = "비밀번호를 입력하세요.";
+               passwordResult.style.color = "red";
+               globalThis.flag[1] = false;
+               return;
+           }
+           globalThis.flag[1] = true;
+       });
+
+       // 추가: input 입력 중에는 빨간 표시를 없애는 이벤트 리스너
+       id.addEventListener("input", () => {
+           id.style.border = ""; // Reset border
+           idResult.innerText = ""; // Clear message
+       });
+
+       password.addEventListener("input", () => {
+           password.style.border = ""; // Reset border
+           passwordResult.innerText = ""; // Clear message
+       });
+
+       button.addEventListener("click", () => {
+           if (globalThis.flag.filter((check) => check).length !== globalThis.flag.length) {
+               alert("아이디 또는 비밀번호를 확인하세요.");
+               return;
+           }
+           form.submit(); // Submit the form if all fields are valid
+       });
+   });

@@ -1,0 +1,13 @@
+  const mebmerBtn = document.querySelector(".member-btn");
+  const sellerBtn = document.querySelector(".seller-btn");
+  const main = document.querySelectorAll(".main-content");
+
+  mebmerBtn.addEventListener("click", () => {
+    main[0].style.display = "block";
+    main[1].style.display = "none";
+  })
+
+  sellerBtn.addEventListener("click", () => {
+    main[0].style.display = "none";
+    main[1].style.display = "block";
+  })

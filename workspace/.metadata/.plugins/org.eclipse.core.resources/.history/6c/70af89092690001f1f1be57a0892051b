@@ -1,0 +1,17 @@
+const idBtn = document.querySelector(".id-btn");
+const passwordBtn = document.querySelector(".password-btn");
+const main = document.querySelectorAll(".main-content");
+
+idBtn.addEventListener("click", () => {
+  main[0].style.display = "block";
+  main[1].style.display = "none";
+  // 포커스 스타일을 유지하기 위해 첫 번째 입력창에 포커스
+  main[0].querySelector(".inputbutton").focus();
+});
+
+passwordBtn.addEventListener("click", () => {
+  main[0].style.display = "none";
+  main[1].style.display = "block";
+  // 포커스 스타일을 유지하기 위해 두 번째 입력창에 포커스
+  main[1].querySelector(".inputbutton").focus();
+});

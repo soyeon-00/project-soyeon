@@ -1,0 +1,6 @@
+const $input = $("input[name='password']");
+$("div.mark").on("click", (e) => {
+  const check = $input.attr("type") === "password";
+  $input.attr("type",check ? "text" : "password");
+ $(e.target).css("background-image", `url(${check ? "./images/eye-on.svg" : "./images/eye-off.svg"})`)
+})

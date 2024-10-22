@@ -1,0 +1,131 @@
+  
+/*회원 판패자 페이지 구분*/
+  const mebmerBtn = document.querySelector(".member-btn");
+  const sellerBtn = document.querySelector(".seller-btn");
+  const main = document.querySelectorAll(".main-content");
+
+  mebmerBtn.addEventListener("click", () => {
+    main[0].style.display = "block";
+    main[1].style.display = "none";
+  })
+
+  sellerBtn.addEventListener("click", () => {
+    main[0].style.display = "none";
+    main[1].style.display = "block";
+  })
+  
+  
+  // 유효성 검사하기
+   // addEventListener
+   // 아이디와 비밀번호의 빈 값을 검사해서 모두 입력했을 때 검증 완료를 alert()으로 띄우기!
+   document.addEventListener("DOMContentLoaded", () => {
+       const mebmerBtn = document.querySelector(".member-btn");
+       const sellerBtn = document.querySelector(".seller-btn");
+       const main = document.querySelectorAll(".main-content");
+
+       mebmerBtn.addEventListener("click", () => {
+           main[0].style.display = "block";
+           main[1].style.display = "none";
+       });
+
+       sellerBtn.addEventListener("click", () => {
+           main[0].style.display = "none";
+           main[1].style.display = "block";
+       });
+
+       // 구매자 로그인 유효성 검사
+       const buyerButton = document.querySelector(".main-content.mebmer .login-button");
+       const buyerId = document.querySelector(".main-content.mebmer input[name=id]");
+       const buyerPassword = document.querySelector(".main-content.mebmer input[name=password]");
+       const buyerIdResult = document.querySelector(".main-content.mebmer #id-result");
+       const buyerPasswordResult = document.querySelector(".main-content.mebmer #password-result");
+       
+       // 판매자 로그인 유효성 검사
+       const sellerButton = document.querySelector(".main-content.seller .login-button");
+       const sellerId = document.querySelector(".main-content.seller input[name=id]");
+       const sellerPassword = document.querySelector(".main-content.seller input[name=password]");
+       const sellerIdResult = document.querySelector(".main-content.seller #id-result");
+       const sellerPasswordResult = document.querySelector(".main-content.seller #password-result");
+
+       globalThis.flag = [false, false]; // Initialize flags
+
+       // 공통 유효성 검사 함수
+       const validateInput = (input, result, index, isEmptyMessage) => {
+           input.addEventListener("focus", () => {
+               input.style.border = ""; // Reset border on focus
+               result.innerText = ""; // Clear message
+           });
+
+           input.addEventListener("blur", () => {
+               if (!input.value) {
+                   input.style.border = "solid 2px red";
+                   result.innerText = isEmptyMessage;
+                   result.style.color = "red";
+                   globalThis.flag[index] = false;
+                   return;
+               }
+               globalThis.flag[index] = true;
+           });
+
+           input.addEventListener("input", () => {
+               input.style.border = ""; // Reset border
+               result.innerText = ""; // Clear message
+           });
+       };
+
+       // 구매자 입력 필드 검증
+       validateInput(buyerId, buyerIdResult, 0, "아이디를 입력하세요.");
+       validateInput(buyerPassword, buyerPasswordResult, 1, "비밀번호를 입력하세요.");
+
+       // 판매자 입력 필드 검증
+       validateInput(sellerId, sellerIdResult, 0, "아이디를 입력하세요.");
+       validateInput(sellerPassword, sellerPasswordResult, 1, "비밀번호를 입력하세요.");
+
+       // 버튼 클릭 이벤트
+       buyerButton.addEventListener("click", () => {
+           if (globalThis.flag.filter((check) => check).length !== globalThis.flag.length) {
+               alert("아이디 또는 비밀번호를 확인하세요.");
+               return;
+           }
+           // 구매자 로그인 폼 제출
+           document.querySelector(".main-content.mebmer form").submit();
+       });
+
+       sellerButton.addEventListener("click", () => {
+           if (globalThis.flag.filter((check) => check).length !== globalThis.flag.length) {
+               alert("아이디 또는 비밀번호를 확인하세요.");
+               return;
+           }
+           // 판매자 로그인 폼 제출
+           document.querySelector(".main-content.seller form").submit();
+       });
+   });
+   
+   
+   
+   // 이메일 중복 확인
+              const existingEmails = ["test@example.com", "user@example.com"]; // 중복 체크 이메일 목록
+
+              checkEmailButton.addEventListener("click", () => {
+                  const email = emailInput.value;
+                  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                  // 이메일 형식 검사
+                  if (!emailPattern.test(email)) {
+                      emailResult.innerText = "유효한 이메일 형식이 아닙니다.";
+                      emailResult.className = "error"; // 오류 메시지 클래스
+                      return;
+                  } else {
+                      emailResult.className = ""; // 클래스 초기화
+                  }
+
+                  // 중복 이메일 체크
+                  if (existingEmails.includes(email)) {
+                      emailResult.innerText = "이미 사용 중인 이메일입니다.";
+                      emailResult.className = "error"; // 오류 메시지 클래스
+                  } else {
+                      emailResult.innerText = "사용 가능한 이메일입니다.";
+                      emailResult.className = "success"; // 성공 메시지 클래스
+                  }
+              });
+          });

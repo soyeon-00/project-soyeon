@@ -1,0 +1,14 @@
+package com.app.vo;
+
+public class SellerVO {
+    private Long id;
+    private Long adminId;
+    private Long businessId;
+    private String sellerEmail;
+    private String sellerPassword;
+    private String sellerName;
+    private String sellerPhone;
+    private boolean sellerSms;
+    private boolean sellerEmailCheck;
+
+}

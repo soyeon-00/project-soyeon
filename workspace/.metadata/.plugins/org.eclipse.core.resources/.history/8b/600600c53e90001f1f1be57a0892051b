@@ -1,0 +1,166 @@
+const mark = document.querySelector(".mark");
+	mark.addEventListener("click", () => {
+		const input = document.querySelector("input[name='password']");
+		const inputConfirm = document.querySelector("input[name='passwordConfirm']");
+		
+		if(input.type === "password"){
+			input.setAttribute("type", "text");
+			inputConfirm.setAttribute("type", "text");
+			mark.style.backgroundImage = "url('../assets/images/login/eye-on.svg')";
+		}else{
+			input.setAttribute("type", "password");
+			inputConfirm.setAttribute("type", "password");
+			mark.style.backgroundImage = "url('../assets/images/login/eye-off.svg')";
+		}
+	})
+
+    // 전체동의 로직 만들기
+    NodeList.prototype.map = Array.prototype.map;
+
+    const allagree = document.querySelector(".allagree")
+    const agree1s = document.querySelectorAll(".agree1")
+
+
+    $(".allagree").on("click", (e) => {
+      $(".agree1").prop("checked", e.target.checked);
+    })
+
+    $(".agree1").on("click", (e) => {
+      $(".allagree").prop("checked", $(".agree1").filter(":checked").length === 4);
+    })
+	
+	
+	
+	/*주소 검색*/
+	function sample6_execDaumPostcode() {
+	           new daum.Postcode({
+	               oncomplete: function(data) {
+	                   var addr = ''; // 주소 변수
+
+	                   // 선택한 주소 타입에 따라 주소 값을 가져온다.
+	                   addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
+
+	                   // 우편번호와 주소 정보를 필드에 넣는다.
+	                   document.getElementById('sample6_postcode').value = data.zonecode;
+	                   document.getElementById("sample6_address").value = addr;
+	                   document.getElementById("sample6_detailAddress").focus(); // 상세주소 필드로 이동
+	               }
+	           }).open();
+	       }
+		   
+		   
+/*회원가입 전체 로깆*/
+document.addEventListener("DOMContentLoaded", () => {
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const passwordConfirmInput = document.getElementById("passwordConfirm");
+    const nicknameInput = document.getElementById("nickname");
+    const phoneInput = document.getElementById("phone");
+    const registerButton = document.getElementById("register-button");
+    
+    const existingEmails = ["test@example.com", "user@example.com"];
+    const existingNicknames = ["nickname1", "nickname2"];
+
+    registerButton.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        let valid = true;
+
+        // 이메일 검증
+        const emailResult = document.getElementById("email-result");
+        emailResult.innerText = "";
+        if (!emailInput.value) {
+            emailResult.innerText = "이메일을 입력하세요.";
+            emailResult.style.color = "red";
+            valid = false;
+        } else if (existingEmails.includes(emailInput.value)) {
+            emailResult.innerText = "이메일이 이미 사용 중입니다.";
+            emailResult.style.color = "red";
+            valid = false;
+        } else {
+            emailResult.innerText = "사용 가능한 이메일입니다.";
+            emailResult.style.color = "green";
+        }
+
+        // 비밀번호 검증
+        const passwordResult = document.getElementById("password-result");
+        passwordResult.innerText = "";
+        if (!passwordInput.value) {
+            passwordResult.innerText = "비밀번호를 입력하세요.";
+            passwordResult.style.color = "red";
+            valid = false;
+        }
+
+        // 비밀번호 확인 검증
+        const passwordConfirmResult = document.getElementById("passwordConfirm-result");
+        passwordConfirmResult.innerText = "";
+        if (passwordInput.value !== passwordConfirmInput.value) {
+            passwordConfirmResult.innerText = "비밀번호가 일치하지 않습니다.";
+            passwordConfirmResult.style.color = "red";
+            valid = false;
+        }
+
+        // 닉네임 검증
+        const nicknameResult = document.getElementById("nickname-result");
+        nicknameResult.innerText = "";
+        if (!nicknameInput.value) {
+            nicknameResult.innerText = "닉네임을 입력하세요.";
+            nicknameResult.style.color = "red";
+            valid = false;
+        } else if (existingNicknames.includes(nicknameInput.value)) {
+            nicknameResult.innerText = "닉네임이 이미 사용 중입니다.";
+            nicknameResult.style.color = "red";
+            valid = false;
+        }
+
+        // 휴대전화 번호 검증
+        const phoneResult = document.getElementById("phone-result");
+        phoneResult.innerText = "";
+        if (!phoneInput.value) {
+            phoneResult.innerText = "휴대전화 번호를 입력하세요.";
+            phoneResult.style.color = "red";
+            valid = false;
+        } else if (!/^\d{11}$/.test(phoneInput.value)) {
+            phoneResult.innerText = "휴대전화 번호는 11자리 숫자여야 합니다.";
+            phoneResult.style.color = "red";
+            valid = false;
+        }
+
+        // 주소 검증
+        const addressResult = document.getElementById("address-result");
+        addressResult.innerText = "";
+        const postcode = document.getElementById("sample6_postcode").value;
+        const address = document.getElementById("sample6_address").value;
+        const detailAddress = document.getElementById("sample6_detailAddress").value;
+        if (!postcode || !address || !detailAddress) {
+            addressResult.innerText = "주소를 입력하세요.";
+            addressResult.style.color = "red";
+            valid = false;
+        }
+
+        // 동의 체크 검증
+        const agreeCheckboxes = document.querySelectorAll(".agree1");
+        const allAgreeCheckbox = document.querySelector(".allagree");
+        let allChecked = true;
+
+        if (!allAgreeCheckbox.checked) {
+            agreeCheckboxes.forEach((checkbox) => {
+                if (!checkbox.checked) {
+                    allChecked = false;
+                }
+            });
+        }
+
+        if (!allChecked) {
+            alert("모든 약관에 동의해야 회원가입이 가능합니다.");
+            valid = false;
+        }
+
+        if (valid) {
+            // 모든 검증 통과 후 회원가입 진행
+            // 여기서 실제 회원가입 요청을 서버에 보낼 수 있습니다.
+            alert("회원가입이 완료되었습니다!");
+            window.location.href = "http://localhost:9000/powpow/buyer-join-complete.jsp";
+        }
+    });
+});

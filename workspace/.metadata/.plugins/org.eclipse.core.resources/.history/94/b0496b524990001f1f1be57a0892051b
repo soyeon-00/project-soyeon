@@ -1,0 +1,142 @@
+const mark = document.querySelector(".mark");
+	mark.addEventListener("click", () => {
+		const input = document.querySelector("input[name='password']");
+		const inputConfirm = document.querySelector("input[name='passwordConfirm']");
+		
+		if(input.type === "password"){
+			input.setAttribute("type", "text");
+			inputConfirm.setAttribute("type", "text");
+			mark.style.backgroundImage = "url('../assets/images/login/eye-on.svg')";
+		}else{
+			input.setAttribute("type", "password");
+			inputConfirm.setAttribute("type", "password");
+			mark.style.backgroundImage = "url('../assets/images/login/eye-off.svg')";
+		}
+	})
+
+	
+	
+    // 전체동의 로직 만들기
+    NodeList.prototype.map = Array.prototype.map;
+
+    const allagree = document.querySelector(".allagree")
+    const agree1s = document.querySelectorAll(".agree1")
+
+
+    $(".allagree").on("click", (e) => {
+      $(".agree1").prop("checked", e.target.checked);
+    })
+
+    $(".agree1").on("click", (e) => {
+      $(".allagree").prop("checked", $(".agree1").filter(":checked").length === 4);
+    })
+	
+	
+	
+	/*주소 검색*/
+	function sample6_execDaumPostcode() {
+	           new daum.Postcode({
+	               oncomplete: function(data) {
+	                   var addr = ''; // 주소 변수
+
+	                   // 선택한 주소 타입에 따라 주소 값을 가져온다.
+	                   addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
+
+	                   // 우편번호와 주소 정보를 필드에 넣는다.
+	                   document.getElementById('sample6_postcode').value = data.zonecode;
+	                   document.getElementById("sample6_address").value = addr;
+	                   document.getElementById("sample6_detailAddress").focus(); // 상세주소 필드로 이동
+	               }
+	           }).open();
+	       }
+		   
+		   
+	/*이메일 검증*/
+	document.addEventListener("DOMContentLoaded", () => {
+	    const emailCheckButton = document.getElementById("email-check");
+	
+	    // 이메일 확인 버튼 클릭 이벤트
+	    emailCheckButton.addEventListener("click", () => {
+	        const emailInput = document.getElementById("email");
+	        const emailResult = document.getElementById("email-result");
+	
+	        // 이메일 입력값 검증
+	        if (!emailInput.value) {
+	            emailResult.innerText = "이메일을 입력하세요.";
+	            emailResult.style.color = "red";
+	        } else if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+	            emailResult.innerText = "올바른 이메일 주소가 아닙니다.";
+	            emailResult.style.color = "red";
+	        } else {
+	            emailResult.innerText = "올바른 이메일입니다.";
+	            emailResult.style.color = "green";
+	            // 추가적인 이메일 중복 검증 로직을 여기에 추가할 수 있습니다.
+	        }
+	    });
+	});
+	
+	
+	/*비밀번호 검증*/
+	document.querySelector(".login-button").addEventListener("click", function(event) {
+	    event.preventDefault(); // 기본 폼 제출 방지
+
+	    // 입력값 가져오기
+	    const password = document.querySelector("#password").value;
+	    const passwordConfirm = document.querySelector("#passwordConfirm").value;
+	    const passwordResult = document.querySelector("#password-result");
+	    const passwordConfirmResult = document.querySelector("#passwordConfirm-result");
+
+	    // 초기화
+	    passwordResult.textContent = "";
+	    passwordConfirmResult.textContent = "";
+
+	    // 비밀번호 검증
+	    if (!password) {
+	        passwordResult.textContent = "비밀번호를 입력하세요.";
+			passwordResult.style.color = "red";
+	    } else if (password.length < 8) {
+	        passwordResult.textContent = "비밀번호는 8자 이상이어야 합니다.";
+			passwordResult.style.color = "red";
+	    }
+
+	    // 비밀번호 확인 검증
+	    if (!passwordConfirm) {
+	        passwordConfirmResult.textContent = "비밀번호 확인을 입력하세요.";
+			passwordConfirmResult.style.color = "red";
+	    } else if (password !== passwordConfirm) {
+	        passwordConfirmResult.textContent = "비밀번호가 일치하지 않습니다.";
+			passwordConfirmResult.style.color = "red";
+	    } else {
+	        passwordConfirmResult.textContent = "비밀번호가 일치합니다.";
+			passwordConfirmResult.style.color = "green";
+	    }
+
+	    // 모든 검증을 통과했을 경우 다음 로직 수행
+	    if (password && password.length >= 8 && password === passwordConfirm) {
+	        // 여기에서 회원가입 로직 수행
+	        alert("회원가입이 완료되었습니다!");
+	        // 예: form.submit(); 또는 다른 페이지로 이동
+	    }
+	});
+	
+	/* 닉네임 검증*/
+	document.addEventListener("DOMContentLoaded", () => {
+	    const nameCheckButton = document.getElementById("name-check");
+
+	    // 이메일 확인 버튼 클릭 이벤트
+	    nameCheckButton.addEventListener("click", () => {
+	        const nameInput = document.getElementById("name");
+	        const nameResult = document.getElementById("name-result");
+
+	        // 이메일 입력값 검증
+	        if (!nameInput.value) {
+	            nameResult.innerText = "이메일을 입력하세요.";
+	            nameResult.style.color = "red";
+	        } else {
+	            nameResult.innerText = "올바른 이메일입니다.";
+	            nameResult.style.color = "green";
+	            // 추가적인 이메일 중복 검증 로직을 여기에 추가할 수 있습니다.
+	        }
+	    });
+	});
+	

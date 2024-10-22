@@ -1,0 +1,11 @@
+INDEX VERSION 1.134
+C:\web_0900_lsy\jsp-project\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1403551752.index
+\powpow\src\main\java
+C:\web_0900_lsy\jsp-project\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2993542216.index
+\powpow\src\main\java
+C:\web_0900_lsy\jsp-project\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3697957643.index
+\powpow\src\main\java
+C:\web_0900_lsy\jsp-project\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2959080780.index
+\powpow\src\main\java
+C:\web_0900_lsy\jsp-project\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3120244434.index
+\powpow\src\main\java

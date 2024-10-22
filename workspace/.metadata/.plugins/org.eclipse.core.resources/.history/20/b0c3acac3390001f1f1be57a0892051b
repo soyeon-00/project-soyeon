@@ -1,0 +1,13 @@
+const idBtn = document.querySelector(".id-btn");
+const passwordBtn = document.querySelector(".password-btn");
+const main = document.querySelectorAll(".main-content");
+
+idBtn.addEventListener("click", () => {
+  main[0].style.display = "block";
+  main[1].style.display = "none";
+})
+
+passwordBtn.addEventListener("click", () => {
+  main[0].style.display = "none";
+  main[1].style.display = "block";
+})

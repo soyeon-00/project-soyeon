@@ -1,0 +1,19 @@
+package com.app.vo;
+
+public class MemberVO {
+
+	private Long id;
+	private Long adminId;                
+	private String memberImage;
+	private String memberNickname;
+	private String memberEmail;
+	private String memberPassword;
+	private String memberPhone;
+	private String memberAdress;
+	private boolean memberSms;      // SMS 수신 여부
+    private boolean memberEmailCheck; // 이메일 확인 여부
+    
+    public MemberVO() {;}
+    
+    
+}

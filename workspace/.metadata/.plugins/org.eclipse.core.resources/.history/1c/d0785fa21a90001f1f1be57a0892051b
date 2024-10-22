@@ -1,0 +1,94 @@
+  
+/*회원 판패자 페이지 구분*/
+  const mebmerBtn = document.querySelector(".member-btn");
+  const sellerBtn = document.querySelector(".seller-btn");
+  const main = document.querySelectorAll(".main-content");
+
+  mebmerBtn.addEventListener("click", () => {
+    main[0].style.display = "block";
+    main[1].style.display = "none";
+  })
+
+  sellerBtn.addEventListener("click", () => {
+    main[0].style.display = "none";
+    main[1].style.display = "block";
+  })
+  
+  
+  // 유효성 검사하기
+   // addEventListener
+   // 아이디와 비밀번호의 빈 값을 검사해서 모두 입력했을 때 검증 완료를 alert()으로 띄우기!
+   document.addEventListener("DOMContentLoaded", () => {
+       const mebmerBtn = document.querySelector(".member-btn");
+       const sellerBtn = document.querySelector(".seller-btn");
+       const main = document.querySelectorAll(".main-content");
+
+       // 유효성 검사 함수
+       const validateLogin = (id, password, idResult, passwordResult) => {
+           let isValid = true;
+
+           if (!id.value) {
+               id.style.border = "solid 2px red";
+               idResult.innerText = "아이디를 입력하세요.";
+               idResult.style.color = "red";
+               isValid = false;
+           } else {
+               id.style.border = ""; // Reset border
+               idResult.innerText = ""; // Clear message
+           }
+
+           if (!password.value) {
+               password.style.border = "solid 2px red";
+               passwordResult.innerText = "비밀번호를 입력하세요.";
+               passwordResult.style.color = "red";
+               isValid = false;
+           } else {
+               password.style.border = ""; // Reset border
+               passwordResult.innerText = ""; // Clear message
+           }
+
+           return isValid;
+       };
+
+       // 회원 로그인 처리
+       const memberId = document.querySelector(".member input[name=id]");
+       const memberPassword = document.querySelector(".member input[name=password]");
+       const memberIdResult = document.querySelector("#id-result");
+       const memberPasswordResult = document.querySelector("#password-result");
+       const memberLoginButton = document.querySelector(".member .login-button");
+
+       memberLoginButton.addEventListener("click", () => {
+           if (validateLogin(memberId, memberPassword, memberIdResult, memberPasswordResult)) {
+               // 로그인 처리 (예: form.submit())
+               alert("회원 로그인 성공!"); // 테스트용
+           } else {
+               alert("회원 로그인에 실패했습니다.");
+           }
+       });
+
+       // 판매자 로그인 처리
+       const sellerId = document.querySelector(".seller input[name=id]");
+       const sellerPassword = document.querySelector(".seller input[name=password]");
+       const sellerIdResult = document.querySelector("#id-result"); // 판매자 아이디 결과를 다른 ID로 설정하는 것이 좋음
+       const sellerPasswordResult = document.querySelector("#password-result"); // 판매자 비밀번호 결과를 다른 ID로 설정하는 것이 좋음
+       const sellerLoginButton = document.querySelector(".seller .login-button");
+
+       sellerLoginButton.addEventListener("click", () => {
+           if (validateLogin(sellerId, sellerPassword, sellerIdResult, sellerPasswordResult)) {
+               // 로그인 처리 (예: form.submit())
+               alert("판매자 로그인 성공!"); // 테스트용
+           } else {
+               alert("판매자 로그인에 실패했습니다.");
+           }
+       });
+
+       mebmerBtn.addEventListener("click", () => {
+           main[0].style.display = "block";
+           main[1].style.display = "none";
+       });
+
+       sellerBtn.addEventListener("click", () => {
+           main[0].style.display = "none";
+           main[1].style.display = "block";
+       });
+   });
